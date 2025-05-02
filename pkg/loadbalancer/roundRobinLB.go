@@ -93,7 +93,7 @@ func (lb *LoadBalancer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 func NewLoadBalancer(serverURLs []string) (*LoadBalancer, error) {
 	var backends []*Backend
-	
+
 	for _, serverURL := range serverURLs {
 		url, err := url.Parse(serverURL)
 		if err != nil {
@@ -112,7 +112,7 @@ func NewLoadBalancer(serverURLs []string) (*LoadBalancer, error) {
 			ReverseProxy: proxy,
 		})
 	}
-	
+
 	return &LoadBalancer{
 		backends: backends,
 	}, nil
