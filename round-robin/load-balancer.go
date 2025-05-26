@@ -15,11 +15,10 @@ import (
 
 // Backend represents a backend server
 type Backend struct {
-	URL                 *url.URL
-	Alive               bool
-	mux                 sync.RWMutex
-	ReverseProxy        *httputil.ReverseProxy
-	NumberOfConnections int
+	URL          *url.URL
+	Alive        bool
+	mux          sync.RWMutex
+	ReverseProxy *httputil.ReverseProxy
 }
 
 // SetAlive updates the alive status of backend
@@ -49,7 +48,7 @@ func (lb *LoadBalancer) NextBackend() *Backend {
 	next := atomic.AddUint64(&lb.current, uint64(1)) % uint64(len(lb.backends))
 
 	// Find the next available backend
-	for i := 0; i < len(lb.backends); i++ {
+	for i := range lb.backends {
 		idx := (int(next) + i) % len(lb.backends)
 		if lb.backends[idx].IsAlive() {
 			return lb.backends[idx]
