@@ -15,10 +15,11 @@ import (
 
 // Backend represents a backend server
 type Backend struct {
-	URL          *url.URL
-	Alive        bool
-	mux          sync.RWMutex
-	ReverseProxy *httputil.ReverseProxy
+	URL                 *url.URL
+	Alive               bool
+	mux                 sync.RWMutex
+	ReverseProxy        *httputil.ReverseProxy
+	NumberOfConnections int
 }
 
 // SetAlive updates the alive status of backend

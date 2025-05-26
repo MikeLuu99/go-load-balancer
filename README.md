@@ -20,7 +20,7 @@ A simple, robust HTTP load balancer implementation in Go.
 
 ```bash
 cd go-load-balancer
-go run loadbalancer/load-balancer.go [options]
+go run round-robin/load-balancer.go [options]
 ```
 
 Options:
@@ -47,5 +47,5 @@ go run backend/simple-backend.go -port 8083
 
 ## Project Structure
 
-- `loadbalancer/`: Contains the load balancer implementation
+- `round-robin/`: Contains the round robin load balancer implementation
 - `backend/`: Contains a simple backend server for testing
